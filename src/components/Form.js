@@ -6,6 +6,7 @@ class Form extends React.Component {
         return (
             <form className="margin" onSubmit = {this.props.getCuaca}>
                 <select className="form-control margin" ref="city" onChange={this.props.handleChange}>
+                    <option value="">Pilih Kota</option>
                     <option value={1642911}>Jakarta, ID</option>
                     <option value={1880252}>Singapore, SG</option>
                     <option value={1609350}>Bangkok, TH</option>
