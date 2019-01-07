@@ -5,8 +5,12 @@ class Form extends React.Component {
     render () {
         return (
             <form onSubmit = {this.props.getCuaca}>
-                <input className='in' name='city' type='text' placeholder='Kota'/>
-                <input className='in' name='country' type='text' placeholder='Negara'/>
+                <select className="form-control" ref="city" onChange={this.props.handleChange}>
+                    <option value={1642911}>Jakarta, ID</option>
+                    <option value={1880252}>Singapore, SG</option>
+                    <option value={1609350}>Bangkok, TH</option>
+                    <option value={1733045}>Kuala Lumpur, MY</option>
+                </select>
                 <button>Search</button>
             </form>
         );
