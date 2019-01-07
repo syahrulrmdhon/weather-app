@@ -13,13 +13,12 @@ class App extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      tempratur: undefined,
-      city: undefined,
       cityID: '',
-      country: undefined,
-      humidity: undefined,
-      description: undefined,
-      error: undefined
+      main: [
+
+      ],
+      cityName: '',
+      error: ''
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -38,7 +37,7 @@ class App extends Component {
     e.preventDefault();
     const cityID = this.state.cityID; 
     // const country = e.target.elements.country.value;
-    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityID}&appid=${API_KEY}&units=metric`);
+    const api_call = await fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${cityID}&appid=${API_KEY}&units=metric&cnt=5`);
     const data = await api_call.json();
 
     console.log(data);
@@ -46,23 +45,17 @@ class App extends Component {
     if (cityID) {
 
       this.setState({
-        temprature : data.main.temp,
-        city : data.name,
-        country : data.sys.country,
-        humidity : data.main.humidity,
-        description : data.weather[0].description,
-        error : ""
+        main: data.list,
+        cityName: data.city,
+        error: ''
       });
 
     } else {
 
       this.setState({
-        temprature : undefined,
-        city : undefined,
-        country : undefined,
-        humidity : undefined,
-        description : undefined,
-        error : data.message
+        main: [],
+        cityName: '',
+        error: data.message
       });
 
     }
@@ -81,11 +74,8 @@ class App extends Component {
                 <div className='col-sm-7 form-container'>
                   <Form getCuaca={this.getCuaca} handleChange={this.handleChange}/>
                   <Cuaca 
-                    temprature = {this.state.temprature}
-                    city = {this.state.city}
-                    country = {this.state.country}
-                    humidity = {this.state.humidity}
-                    description = {this.state.description}
+                    main = {this.state.main}
+                    cityName = {this.state.cityName}
                     error = {this.state.error}
                   />
                 </div>

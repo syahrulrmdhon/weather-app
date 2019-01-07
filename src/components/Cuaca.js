@@ -4,30 +4,26 @@ class Cuaca extends React.Component {
     render () {
         return (
             <div>
-                { this.props.city && this.props.country && 
-                    <p className='weather__key'>
-                        Location : 
-                        <span className='weather__value'>
-                            {this.props.city} , {this.props.country} 
-                        </span>
-                    </p> 
-                }
-                { this.props.temprature && this.props.humidity && 
-                    <p className='weather__key'>
-                        Temparature : 
-                        <span className='weather__value'>
-                            {this.props.temprature} &deg;C
-                        </span> 
-                    </p>
-                }
-                { this.props.description && 
-                    <p className='weather__key'>
-                        Description : 
-                        <span className='weather__value'>
-                            {this.props.description}
-                        </span>
-                    </p>
-                }
+                <table className="table table-dark">
+                    <thead>
+                    { this.props.cityName && 
+                            <tr>
+                                <th scope="col">{this.props.cityName.name}</th>
+                                <th scope="col">Suhu</th>
+                                <th scope="col">Perbedaan</th>
+                            </tr>
+                    }
+                    </thead>
+                    <tbody>
+                    { this.props.main.map(item =>(
+                            <tr key={item.dt}>
+                                <td>{item.dt_txt}</td>
+                                <td>{item.main.temp}&#8451;</td>
+                                <td>{item.main.temp_kf}</td>
+                            </tr>
+                    ))}
+                    </tbody>
+                </table>
                 { this.props.error &&
                     <p className='weather__key'>{this.props.error}</p>
                 }
