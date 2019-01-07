@@ -4,7 +4,7 @@ class Cuaca extends React.Component {
     render () {
         return (
             <div>
-                <table className="table table-dark">
+                <table className="table table-dark margin">
                     <thead>
                     { this.props.cityName && 
                             <tr>

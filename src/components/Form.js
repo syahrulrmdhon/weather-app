@@ -4,8 +4,8 @@ class Form extends React.Component {
 
     render () {
         return (
-            <form onSubmit = {this.props.getCuaca}>
-                <select className="form-control" ref="city" onChange={this.props.handleChange}>
+            <form className="margin" onSubmit = {this.props.getCuaca}>
+                <select className="form-control margin" ref="city" onChange={this.props.handleChange}>
                     <option value={1642911}>Jakarta, ID</option>
                     <option value={1880252}>Singapore, SG</option>
                     <option value={1609350}>Bangkok, TH</option>
@@ -13,7 +13,7 @@ class Form extends React.Component {
                 </select>
                 <button>Search</button>
             </form>
-        );
+        ); 
     }
 }
 
